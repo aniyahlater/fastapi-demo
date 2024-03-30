@@ -20,7 +20,7 @@ DB = "nem2p"
 
 @app.get("/")  # zone apex
 def zone_apex():
-    return {"Hello": "Hello API", "album_endpoint":"/albums","static_endpoint":"/static"}
+    return {"Hello": "Hello API", "Genre":"/fantasy","MovieName":"/TheBoyandTheHeron"}
 
 
 
