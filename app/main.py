@@ -34,15 +34,18 @@ def get_all_albums():
     return results
 
 
-# @app.get("/albums/{id}")
-# def get_one_album(id):
-#     db = MySQLdb.connect(host=DBHOST, user=DBUSER, passwd=DBPASS, db=DB)
-#     c = db.cursor(MySQLdb.cursors.DictCursor)
-#     c.execute("SELECT * FROM albums WHERE id=" + id)
-#     results = c.fetchall()
-#     db.close()
-#     return results
-    
+@app.get("/albums/{id}")
+def get_one_album(id):
+     db = MySQLdb.connect(host=DBHOST, user=DBUSER, passwd=DBPASS, db=DB)
+     c = db.cursor(MySQLdb.cursors.DictCursor)
+     c.execute("SELECT * FROM albums WHERE id=" + id)
+     results = c.fetchall()
+     db.close()
+     return results
+@app.get("/")
+def another_movie():
+    return{'Genre': 'Fantasy', 'Origin Country': 'Japan', 'Director': 'Hayao Miyaki', 'Movie Title': 'The Boy and the Heron'}
+
 
 
 
