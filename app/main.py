@@ -43,7 +43,7 @@ def get_one_album(id):
      db.close()
      return results
 @app.get("/")
-def another_movie():
+def another_zone_apex():
     return{'Genre': 'Fantasy', 'Origin Country': 'Japan', 'Director': 'Hayao Miyaki', 'Movie Title': 'The Boy and the Heron'}
 
 
