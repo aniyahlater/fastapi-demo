@@ -22,10 +22,14 @@ DB = "ybf3jw"
 def zone_apex():
     return {"Hello": "Hello API", "album_endpoint":"/albums","static_endpoint":"/static"}
 
-@app.get("/another")
-def another():
-    return {"MOVIETITLE": "TheBoyandTheHeron", "GENRE": "Fantasy", "ORIGIN": "Japan"}
 
+@app.get("/albums")
+def get_albums():
+    db = MySQLdb.connect(host=DBHOST, user=DBUSER, passwd=DBPASS, db=DB)
+    c = db.cursor(MySQLdb.cursors.DictCursor)
+    c.execute("""SELECT * FROM albums ORDER BY name""")
+    results = c.fetchall()
+return results
 
 
 @app.get("/albums")
@@ -46,9 +50,11 @@ def get_one_album(id):
      results = c.fetchall()
      db.close()
      return results
-@app.get("/")
-def another_zone_apex():
-    return{'Genre': 'Fantasy', 'Origin Country': 'Japan', 'Director': 'Hayao Miyaki', 'Movie Title': 'The Boy and the Heron'}
+@app.get("/testing")
+def testytester():
+    message = "good job you know how to code"
+    return{"Hiii":message}
+
 
 
 
